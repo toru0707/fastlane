@@ -74,7 +74,8 @@ module Snapshot
       end
 
       def destination(device)
-        value = "platform=iOS Simulator,id=#{device_udid(device)},OS=#{Snapshot.config[:ios_version]}"
+				#value = "platform=iOS,name=#{device},OS=#{Snapshot.config[:ios_version]}"
+				value = "platform=iOS,name=#{device}"
 
         return ["-destination '#{value}'"]
       end

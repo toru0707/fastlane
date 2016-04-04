@@ -35,6 +35,7 @@ module Snapshot
                                      type: Array,
                                      optional: true,
                                      verify_block: proc do |value|
+                                       #available = FastlaneCore::Simulator.all("iOS")
                                        available = FastlaneCore::Simulator.all
                                        value.each do |current|
                                          unless available.any? { |d| d.name.strip == current.strip }

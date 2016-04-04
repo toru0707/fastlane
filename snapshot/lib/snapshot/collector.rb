@@ -29,6 +29,7 @@ module Snapshot
         components = [device_name, launch_arguments_index, name].delete_if { |a| a.to_s.length == 0 }
 
         output_path = File.join(language_folder, components.join("-") + ".png")
+				output_path.gsub!(/(\r\n|\r|\n| )/, "")
         from_path = File.join(attachments_path, filename)
         if $verbose
           UI.success "Copying file '#{from_path}' to '#{output_path}'..."

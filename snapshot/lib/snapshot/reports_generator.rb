@@ -10,9 +10,13 @@ module Snapshot
 
       @data = {}
 
+			UI.message "screen_path : #{screens_path}"
       Dir[File.join(screens_path, "*")].sort.each do |language_folder|
         language = File.basename(language_folder)
+			UI.message "language_folder : #{language_folder}"
         Dir[File.join(language_folder, '*.png')].sort.each do |screenshot|
+					UI.message "screenshot : #{screenshot}"
+					UI.message "available_devices : #{available_devices}"
           available_devices.each do |key_name, output_name|
             next unless File.basename(screenshot).include?(key_name)
 
@@ -52,6 +56,7 @@ module Snapshot
       # The order IS important, since those names are used to check for include?
       # and the iPhone 6 is inlucded in the iPhone 6 Plus
       {
+        'RSDI178' => "5.5-Inch",
         'iPhone6sPlus' => "5.5-Inch",
         'iPhone6Plus' => "5.5-Inch",
         'iPhone6s' => "4.7-Inch",
